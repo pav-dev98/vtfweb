@@ -1,0 +1,148 @@
+---
+---
+
+<div class="cita-section py-12" id="cita-section">
+  <h1 class="text-3xl mb-8 capitalize mt-12 text-center mb-8 font-bold">
+    <span class="text-blue-500">Elige un dia para</span>
+    tu visita
+  </h1>
+  <p class="text-gray-400 text-center">
+    En esta seccion podras agendar una visita a nuestra facultad de manera
+    sencilla
+  </p>
+  <p class="text-gray-400 text-center">
+    Solo rellena los campos necesarios selecciona a una fecha y hora y tu cita
+    sera enviada, en el transcurso del dia se te enviará la confirmacion 😉
+  </p>
+  <div class="flex gap-4 mt-12 p-8">
+    <div class="shadow-2xl rounded-2xl text-gray-400 p-4">
+      <form
+        id="form"
+        class="p-8 flex flex-col gap-4"
+        action="/api/submit"
+        method="POST"
+      >
+        <div class="flex justify-between gap-4 items-center">
+          <label for="name">Nombre:</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            class="border rounded-md p-1"
+          />
+        </div>
+        <div class="flex justify-between gap-4 items-center">
+          <label for="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            class="border rounded-md p-1"
+          />
+        </div>
+        <div class="flex justify-between gap-4 items-center">
+          <label for="date">Fecha de Visita:</label>
+          <input
+            type="date"
+            id="date"
+            name="date"
+            required
+            class="border rounded-md p-1"
+          />
+        </div>
+        <div class="flex justify-between items-center">
+          <label for="time">Hora de Visita:</label>
+          <input
+            type="time"
+            id="time"
+            name="time"
+            required
+            class="border rounded-md p-1"
+          />
+        </div>
+        <div class="flex justify-between gap-4 items-center">
+          <label for="institution">Institución:</label>
+          <input
+            type="text"
+            id="institution"
+            name="institution"
+            required
+            class="border rounded-md p-1"
+          />
+        </div>
+        <button
+          type="submit"
+          class="bg-blue-500 text-white py-2 rounded-xl mt-8 uppercase"
+        >
+          Reservar Visita
+        </button>
+      </form>
+    </div>
+    <div class="shadow-2xl flex-grow rounded-xl p-8">
+      <h1 class="text-xl mb-4">Diciembre 2024</h1>
+      <div class="grid grid-cols-7 w-[600px] gap-2 text-center">
+        <div class="bg-blue-100">lun</div>
+        <div>mar</div>
+        <div>mie</div>
+        <div>jue</div>
+        <div>vie</div>
+        <div>sab</div>
+        <div>dom</div>
+        <div class="bg-red-100 hover:bg-blue-100 text-red-500">1</div>
+        <div class="hover:bg-blue-100">2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+        <div>10</div>
+        <div>12</div>
+        <div>13</div>
+        <div>14</div>
+        <div>15</div>
+        <div>16</div>
+        <div>17</div>
+        <div>18</div>
+        <div>19</div>
+        <div>20</div>
+        <div>21</div>
+        <div>22</div>
+        <div>23</div>
+        <div>24</div>
+        <div>25</div>
+        <div>26</div>
+        <div>26</div>
+        <div>28</div>
+        <div>29</div>
+        <div>30</div>
+        <div>31</div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  let form = document.getElementById('form') as HTMLFormElement;
+  let flag = form instanceof HTMLFormElement;
+  if (!flag) {
+      console.error('Form not found');
+  }
+  else{
+
+      form?.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          let formData = new FormData(form);
+          let datos = Object.fromEntries(formData);
+          console.log(datos,"objeto creo");
+          let response = await fetch('/api/submit', {
+              method: 'POST',
+              body: JSON.stringify(datos),
+          });
+          let result = await response.json();
+          console.log(result);
+      });
+  }
+</script>
