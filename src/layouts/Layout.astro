@@ -36,12 +36,17 @@ import Drawer from "../components/Drawer.astro"
                 class="w-[40px]"
               />
             </div>
-            <nav class="text-gray-500 flex gap-4">
+            <nav class="text-gray-500 flex gap-6 hidden md:flex">
               <a href="/" class="hover:text-blue-500">Home</a>
-              <a href="/about" class="hover:text-blue-500">About</a>
-              <a href="/contact" class="hover:text-blue-500">Contact</a>
-              <a href="/visit" class="hover:text-blue-500">visit</a>
+              <a href="/about" class="hover:text-blue-500">Quienes somos</a>
+              <a href="/contact" class="hover:text-blue-500">Contactanos</a>
+              <a href="/visit" class="hover:text-blue-500">visitas</a>
             </nav>
+            <div class="block md:hidden">
+              <button>
+                <i class="fa-solid fa-bars"></i>
+              </button>
+            </div>
           </div>
         </header>
         <main>
@@ -49,8 +54,8 @@ import Drawer from "../components/Drawer.astro"
             <slot />
           </div>
         </main>
-        <footer class="bg-gray-950 p-4">
-          <div class="container mx-auto text-white p-16">
+        <footer class="bg-gray-950 px-4 py-6" >
+          <div class="container mx-auto text-white md:p-8">
             <!-- <div>
               <p class="">
                 Dirección: Av. Universitaria s/n, tingo maria, Perú
@@ -83,7 +88,7 @@ import Drawer from "../components/Drawer.astro"
               <h1>FIIS UNAS</h1>
               <div class="bg-white flex items-center rounded-md">
                 <input type="text" placeholder="Ingresa tu email" class="mx-8 text-blue-900">
-                <button class="bg-blue-900 py-2 px-4 rounded-md">suscribete</button>
+                <button class="bg-blue-500 py-2 px-4 rounded-md">suscribete</button>
               </div>
             </div>
             <div class="text-right mt-8">
@@ -92,7 +97,6 @@ import Drawer from "../components/Drawer.astro"
           </div>
         </footer>
         <Drawer />
-      
       </div>
     </div>
   </body>

@@ -5,16 +5,16 @@ import img from '../assets/facu.jpg';
 ---
 
 <Layout>
-  <div class="hero-section flex h-screen">
-    <div class="w-7/12 flex flex-col justify-center p-8 gap-8">
+  <div class="hero-section flex flex-col md:flex-row md:h-screen">
+    <div class="w-full md:w-7/12 flex flex-col justify-center p-8 gap-8 h-screen md:h-auto">
       <div>
-        <p class="text-6xl mb-4 text-gray-950 capitalize leading-snug">
+        <p class="text-5xl text-center md:text-start md:text-6xl mb-4 text-gray-950 capitalize leading-snug">
           Explora nuestas
           <span class="font-bold text-blue-500">instalaciones</span>
           y
           <span class="font-bold text-blue-500">programas</span>
         </p>
-        <p class="text-gray-400">
+        <p class="text-gray-400 text-center md:text-start">
           Abrimos nuestras puertas para que puedas conocer nuestras
           instalaciones y servicios.
         </p>
@@ -34,7 +34,7 @@ import img from '../assets/facu.jpg';
         </a>
       </div>
     </div>
-    <div class="w-5/12 relative flex items-center justify-center">
+    <div class="w-full md:w-5/12 relative flex items-center justify-center">
       <div class="img-container relative">
         <img
           src={img.src}
@@ -42,7 +42,7 @@ import img from '../assets/facu.jpg';
           class="w-[400px] h-[500px] object-cover rounded-2xl"
         />
         <div
-          class="floating rounded-bl-[2rem] rounded-md absolute top-[-60px] left-[-60px] bg-white shadow-2xl w-[150px] p-4 flex flex-col items-center"
+          class="floating rounded-bl-[2rem] rounded-md absolute top-[-60px] left-0 md:left-[-60px] bg-white shadow-2xl w-[150px] p-4 flex flex-col items-center"
         >
           <span class="rounded-full p-2 flex text-blue-500 bg-blue-100 text-xs">
             <i class="fa-solid fa-magnifying-glass"></i>
