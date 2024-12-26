@@ -1,3 +1,6 @@
+---
+import Drawer from "../components/Drawer.astro"
+---
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -47,8 +50,8 @@
           </div>
         </main>
         <footer class="bg-gray-950 p-4">
-          <div class="container mx-auto text-white flex justify-around">
-            <div>
+          <div class="container mx-auto text-white p-16">
+            <!-- <div>
               <p class="">
                 Dirección: Av. Universitaria s/n, tingo maria, Perú
               </p>
@@ -74,9 +77,22 @@
             </div>
             <div>
               <p class="uppercase">© 2024 Fiis unas</p>
+            </div> -->
+            
+            <div class="flex justify-between">
+              <h1>FIIS UNAS</h1>
+              <div class="bg-white flex items-center rounded-md">
+                <input type="text" placeholder="Ingresa tu email" class="mx-8 text-blue-900">
+                <button class="bg-blue-900 py-2 px-4 rounded-md">suscribete</button>
+              </div>
+            </div>
+            <div class="text-right mt-8">
+              <span>2024 © FIIS UNAS . Todos los derechos reservados</span>
             </div>
           </div>
         </footer>
+        <Drawer />
+      
       </div>
     </div>
   </body>
