@@ -2,10 +2,24 @@
 import Cita from '../components/Cita.astro';
 import Layout from '../layouts/Layout.astro';
 import img from '../assets/facu.jpg';
+// import { onRequest } from '../middleware/auth.js';
+
+// Verificar el token con el middleware
+// export const prerender = false; // Desactiva el prerender
+// export async function get(context) {
+//   const response = await onRequest(context);
+
+//   if (response) {
+//     return response; // Redirige a /login si no hay token
+//   }
+
+//   // Continúa con la carga de la página si el token es válido
+//   return {};
+// }
 ---
 
 <Layout>
-  <div class="hero-section flex flex-col md:flex-row md:h-screen">
+  <!-- <div class="hero-section flex flex-col md:flex-row md:h-screen">
     <div class="w-full md:w-7/12 flex flex-col justify-center p-8 gap-8 h-screen md:h-auto">
       <div>
         <p class="text-5xl text-center md:text-start md:text-6xl mb-4 text-gray-950 capitalize leading-snug">
@@ -54,7 +68,7 @@ import img from '../assets/facu.jpg';
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
   <Cita />
 </Layout>
 <script>

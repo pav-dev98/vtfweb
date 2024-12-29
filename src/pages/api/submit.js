@@ -11,6 +11,16 @@ function convineDateWithHour(date,hour) {
 
 export const prerender = false;
 export async function POST({ request }) {
+    const cookies = request.headers.get('cookie') || '';
+    console.log(cookies,"las cookies");
+
+    const token = cookies
+        .split('; ')
+        .find((cookie) => cookie.startsWith('token='))
+        ?.split('=')[1];
+
+    console.log("pavelelelellelele .... token",token);
+
     const {request_type,request_reason,visitor_count,event_type,start,end,hourStart,hourEnd} = await request.json();
 
     let requested_date = new Date().toISOString().split('T')[0];
@@ -28,7 +38,7 @@ export async function POST({ request }) {
     }
 
     // guardamos en la base de datos
-     let response = await ApiClient.getResource('/visit-requests', 'POST',dataToSave);
+     let response = await ApiClient.createVisit(token,dataToSave);
      let message = response.message;
      if(message === "Solicitud y evento creados exitosamente."){
         return new Response(JSON.stringify({ status : 200 , message: message}), {
@@ -40,6 +50,8 @@ export async function POST({ request }) {
             headers: { 'Content-Type': 'application/json' },
         });
      }
+    
+    
 
 
     // return new Response(JSON.stringify({ message: 'Datos recibidos', request_type }), {

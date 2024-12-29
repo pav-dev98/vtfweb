@@ -1,0 +1,82 @@
+
+---
+import LayoutAuth from "../layouts/LayoutAuth.astro"
+---
+
+<LayoutAuth>
+    <div class="bg-gradient-to-r from-blue-700 via-blue-600 to-blue-400">
+        <div class="container h-screen mx-auto flex">
+            <div class="p-16   flex w-full text-white gap-8">
+                <div class="grow  flex flex-col justify-center">
+                    <h1 class="text-6xl uppercase font-bold">Visitas fiis</h1>
+                    <p class="mt-4 opacity-90 capitalize">Has login como representante de tu institucion y agenda tu visita.</p>
+                    <p class="mt-8 "><span class="opacity-60">Si no tienes una cuenta solo tienes que,</span> <a href="" class="">registrarte</a></p>
+                </div>
+                <div class="grow  px-20">
+                    <div class="form bg-white text-black p-8 rounded-lg">
+                        <h2 class="text-2xl capitalize text-center mb-4 font-bold">bienvenido nuevamente</h2>
+                        <p class="text-center text-xs">Lorem ipsum dolor sit amet consectetur  </p>
+                        <form action="" class="py-16 border-b  gap-4 flex flex-col" id="form-login">
+                            <div>
+                                <input type="email" placeholder="usuario" class="py-3 px-4 w-full border rounded-xl" id="user-input" name="user" required>
+                            </div>
+                            <div>
+                                <input type="password" placeholder="password" class="py-3 px-4 w-full border rounded-xl" id="password-input" name="password" required>
+        
+                            </div>
+                            <div class="text-center">
+                                <a href="">olvidaste tu password?</a>
+                            </div>
+                            
+                            <div>
+                                <button class="w-full bg-blue-500 py-2 rounded-xl text-white">Login</button>
+                            </div>
+                        </form>
+                        <div class="py-16">
+                            <div class="flex justify-center gap-4 items-center">
+                                <button class="py-2 rounded-xl bg-blue-50 px-8"><span><i class="fa-brands fa-google"></i></span> Google</button>o<button class="py-2 rounded-xl bg-blue-50 px-8"><span><i class="fa-brands fa-google"></i></span> outlook</button>
+                            </div>
+                            
+                            <div class="mt-16">
+                                <p class="text-center">No tienes una cuenta? <a href="" class="text-blue-500">Sing up</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</LayoutAuth>
+<script>
+    let formLogin = document.getElementById('form-login');
+    let user = document.getElementById('user-input');
+    let password = document.getElementById('password-input');
+    formLogin?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        fetch('http://localhost:4321/api/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                user: user?.value,
+                password: password?.value
+            })
+        }).then(res => {
+            if (res.redirected) {
+                window.location.href = res.url;
+            } else {
+                return res.json();
+            }
+        })
+        .then(data => {
+            if (data) {
+                console.log(data);
+                console.log("recibiendo datos");
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    });
+</script>
